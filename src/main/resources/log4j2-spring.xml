@@ -13,11 +13,11 @@
         </File>
     </Appenders>
     <Loggers>
-        <Logger name="com.demo.ReactiveCircuitBreaker.CircuitBreakerController" level="warn" additivity="false">
+        <Logger name="com.demo.ReactiveCircuitBreaker.controller.CircuitBreakerController" level="warn" additivity="false">
             <AppenderRef ref="FILE"/>
             <AppenderRef ref="CONSOLE"/>
         </Logger>
-        <Logger name="com.demo.ReactiveCircuitBreaker.CircuitBreakerService" level="warn" additivity="false">
+        <Logger name="com.demo.ReactiveCircuitBreaker.service.CircuitBreakerService" level="warn" additivity="false">
             <AppenderRef ref="FILE"/>
             <AppenderRef ref="CONSOLE"/>
         </Logger>

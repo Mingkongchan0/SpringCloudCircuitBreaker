@@ -1,0 +1,31 @@
+resilience4j.circuitbreaker:
+    configs:
+      default:
+        waitDurationInOpenState: 10000
+        failureRateThreshold: 10
+        registerHealthIndicator: true
+    instances:
+      cbtest:
+        baseConfig: default
+
+resilience4j.retry:
+  instances:
+    cbtest:
+      maxRetryAttempts: 5
+      waitDuration: 1s
+      retryExceptions:
+        - java.util.concurrent.TimeoutException
+
+resilience4j.timelimiter:
+    instances:
+      cbtest:
+        timeoutDuration: 5000ms
+
+resilience4j.bulkhead:
+  configs:
+    default:
+      maxConcurrentCalls: 2
+      maxWaitDuration: 10ms
+  instances:
+    cbtest:
+      baseConfig: default

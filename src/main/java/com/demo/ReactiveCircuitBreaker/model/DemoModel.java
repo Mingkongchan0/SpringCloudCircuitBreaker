@@ -1,4 +1,4 @@
-package com.demo.ReactiveCircuitBreaker;
+package com.demo.ReactiveCircuitBreaker.model;
 
 
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ public class DemoModel {
     @Id private Integer id;
     private String name, username, email, password;
 
-    DemoModel(){
-        this.setName("NAME NOT FOUND");
+    DemoModel(String name){
+        this.setName(name + " cannot be found!");
     }
 }

@@ -1,12 +1,13 @@
 package com.demo.ReactiveCircuitBreaker;
 
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
+import io.github.resilience4j.common.circuitbreaker.configuration.CircuitBreakerConfigCustomizer;
+import io.github.resilience4j.common.timelimiter.configuration.TimeLimiterConfigCustomizer;
+import io.github.resilience4j.timelimiter.TimeLimiter;
 import io.github.resilience4j.timelimiter.TimeLimiterConfig;
+import io.github.resilience4j.timelimiter.TimeLimiterRegistry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.circuitbreaker.resilience4j.ReactiveResilience4JCircuitBreakerFactory;
-import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JConfigBuilder;
-import org.springframework.cloud.client.circuitbreaker.ReactiveCircuitBreakerFactory;
 import org.springframework.context.annotation.Bean;
 
 import java.time.Duration;
@@ -19,14 +20,10 @@ public class ReactiveCircuitBreakerApplication {
 		SpringApplication.run(ReactiveCircuitBreakerApplication.class, args);
 	}
 
+	/*
 	@Bean
-	ReactiveCircuitBreakerFactory circuitBreakerFactory(){
-		var factory = new ReactiveResilience4JCircuitBreakerFactory();
-		factory.configureDefault((Function<String, Resilience4JConfigBuilder.Resilience4JCircuitBreakerConfiguration>)
-				s -> new Resilience4JConfigBuilder(s)
-				.timeLimiterConfig(TimeLimiterConfig.custom().timeoutDuration(Duration.ofSeconds(5)).build())
-				.circuitBreakerConfig(CircuitBreakerConfig.ofDefaults())
-				.build());
-		return factory;
-	}
+	static TimeLimiterConfigCustomizer customizer(){
+		return TimeLimiterConfigCustomizer.of("cbtest", builder -> builder.timeoutDuration(Duration.ofMillis(5000)).build());
+	}*/
+	//Backup of resilience4j.timelimiter.instances. Also supersedes the settings defined in application,yml
 }
